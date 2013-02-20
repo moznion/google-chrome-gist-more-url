@@ -1,5 +1,5 @@
 {
-    "name": "GistExpander",
+    "name": "GistUrlFetcher",
     "version": "0.0.1",
     "manifest_version": 2,
     "description": "This extension shows link to repository of 'ssh' and 'git' on Gist",
