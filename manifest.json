@@ -2,7 +2,7 @@
     "name": "ShowMoreGistUrl",
     "version": "0.0.1",
     "manifest_version": 2,
-    "description": "This extension shows link to repository of 'ssh' and 'git' on Gist",
+    "description": "The Google Chrome extension that shows url to clone as 'ssh' and 'git' style on Gist.",
     "content_scripts": [
             {
               "matches": ["https://gist.github.com/*"],
