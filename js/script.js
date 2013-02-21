@@ -8,25 +8,25 @@ $(function(){
             $((constructListElement('Git Read-Only', uris.git))).hide().appendTo(targetLi).fadeIn(delayTime);
         }
     });
-
-    function constructUri(baseUri) {
-        var httpsUri, sshUri, gitUri;
-
-        httpsUri = baseUri.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
-        sshUri   = httpsUri.replace(/.*:\/\/(.*)\/(.*)/, "git@$1:$2");
-        gitUri   = httpsUri.replace(/.*\/\/(.*)/, "git://$1");
-
-        return {'ssh': sshUri, 'git': gitUri};
-    }
-
-    function constructListElement(protocol, uri) {
-        return '<li>' +
-            '<label for="link-field">' +
-            '<strong>clone</strong> ' +
-            'this gist (' + protocol +')' +
-            '</label>' +
-            '<input type="text" readonly=" spellcheck="false" class="url-field js-url-field" name="link-field" ' +
-            'value=' + uri + '>' +
-            '</li>';
-    }
 });
+
+function constructUri(baseUri) {
+    var httpsUri, sshUri, gitUri;
+
+    httpsUri = baseUri.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
+    sshUri   = httpsUri.replace(/.*:\/\/(.*)\/(.*)/, "git@$1:$2");
+    gitUri   = httpsUri.replace(/.*\/\/(.*)/, "git://$1");
+
+    return {'ssh': sshUri, 'git': gitUri};
+}
+
+function constructListElement(protocol, uri) {
+    return '<li>' +
+        '<label for="link-field">' +
+        '<strong>clone</strong> ' +
+        'this gist (' + protocol +')' +
+        '</label>' +
+        '<input type="text" readonly=" spellcheck="false" class="url-field js-url-field" name="link-field" ' +
+        'value=' + uri + '>' +
+        '</li>';
+}
