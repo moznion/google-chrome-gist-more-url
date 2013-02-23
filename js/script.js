@@ -20,7 +20,7 @@ function constructListElement(protocol, uri) {
 }
 
 $(function () {
-    $(document).bind('mouseover', function () {
+    $(document).on('mouseover', function () {
         var uris, targetLi, delayTime = 500;
         if ($('ul.export-references li').length < 5) { // XXX EVIL!!!
             targetLi = $($('ul.export-references li')[1]);
