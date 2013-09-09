@@ -1,5 +1,8 @@
 var Gist = function (baseURL, protocol, description) {
-    this.httpsURL = baseURL.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
+    if (!Gist.prototype.httpsURL) {
+        Gist.prototype.httpsURL = baseURL.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
+    }
+
     this.urlInfo = {
         protocol:    protocol,
         description: description,
