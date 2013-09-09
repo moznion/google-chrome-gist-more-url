@@ -24,17 +24,23 @@ Gist.prototype.parseURL = function () {
     this.urlInfo.url = url;
 };
 
-Gist.prototype.constructListElement = function () {
+Gist.prototype.constructList = function () {
     var urlInfo = this.urlInfo;
 
-    return '<li>' +
+    var list_template = '<li>' +
         '<label for="link-field">' +
         '<strong>clone</strong> ' +
-        'this gist (' + urlInfo.description + ')' +
+        'this gist (<%- description %>)' +
         '</label>' +
         '<input type="text" readonly=" spellcheck="false" class="url-field js-url-field" name="link-field" ' +
-        'value=' + urlInfo.url + '>' +
+        'value=<%- url %>>' +
         '</li>';
+    var list = _.template(list_template)({
+        description: urlInfo.description,
+        url:         urlInfo.url
+    });
+
+    return list;
 };
 
 $(function () {
@@ -47,7 +53,7 @@ $(function () {
         sshGist.parseURL();
         gitGist.parseURL();
 
-        $(sshGist.constructListElement()).hide().appendTo(targetLi).fadeIn(500);
-        $(gitGist.constructListElement()).hide().appendTo(targetLi).fadeIn(500);
+        $(sshGist.constructList()).hide().appendTo(targetLi).fadeIn(500);
+        $(gitGist.constructList()).hide().appendTo(targetLi).fadeIn(500);
     }
 });
