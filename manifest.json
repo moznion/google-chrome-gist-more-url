@@ -1,13 +1,13 @@
 {
     "name": "more-gist-url",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "manifest_version": 2,
-    "description": "The Google Chrome extension that shows url to clone as 'ssh' and 'git' style on Gist.",
+    "description": "Show extend url to clone (by 'ssh' and 'git') on Gist.",
     "content_scripts": [
-            {
-              "matches": ["https://gist.github.com/*"],
-              "js": ["vendor/js/jquery-1.9.1.min.js", "vendor/js/underscore-min.js", "js/script.js"],
-              "run_at": "document_start"
-            }
+        {
+          "matches": ["https://gist.github.com/*"],
+          "js": ["vendor/js/jquery-1.9.1.min.js", "vendor/js/underscore-min.js", "js/script.js"],
+          "run_at": "document_start"
+        }
     ]
 }

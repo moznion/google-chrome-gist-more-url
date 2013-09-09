@@ -1,5 +1,5 @@
 # NAME
-more-gist-url - The Google Chrome extension that shows url to clone as 'ssh' and 'git' style on Gist.
+more-gist-url - The Google Chrome extension to show extend url to clone (by 'ssh' and 'git') on Gist.
 
 # USAGE & HOW TO INSTALL
 1. Please enable 'Developer mode' on your Chrome extensions setting.

@@ -38,14 +38,20 @@ Gist.prototype.constructList = function () {
 
 $(function () {
     $.event.add(document, 'mouseover', function() {
-        var delayTime = 500;
         var $urlList  = $('ul.export-references li');
 
         if ($urlList.length < 5) { // XXX EVIL!!!
             var $targetLi = $($urlList[1]);
-            var sshGist = new Gist($targetLi.context.baseURI, 'ssh', 'SSH');
-            var gitGist = new Gist($targetLi.context.baseURI, 'git', 'Git Read-Only');
+            var $baseURI;
+            try {
+                baseURI = $targetLi.context.baseURI;
+            } catch (e) {
+                return;
+            }
+            var sshGist = new Gist(baseURI, 'ssh', 'SSH');
+            var gitGist = new Gist(baseURI, 'git', 'Git Read-Only');
 
+            var delayTime = 500;
             $(sshGist.constructList()).hide().appendTo($targetLi).fadeIn(delayTime);
             $(gitGist.constructList()).hide().appendTo($targetLi).fadeIn(delayTime);
         }
