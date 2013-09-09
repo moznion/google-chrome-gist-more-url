@@ -1,5 +1,5 @@
 {
-    "name": "more-gist-url",
+    "name": "gist-more-url",
     "version": "0.0.4",
     "manifest_version": 2,
     "description": "Show extend url to clone (by 'ssh' and 'git') on Gist.",
