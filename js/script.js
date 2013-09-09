@@ -44,6 +44,6 @@ $(function () {
     var sshGist = new Gist($targetLi.context.baseURI, 'ssh', 'SSH');
     var gitGist = new Gist($targetLi.context.baseURI, 'git', 'Git Read-Only');
 
-    $(sshGist.constructList()).hide().appendTo($targetLi).fadeIn(500);
-    $(gitGist.constructList()).hide().appendTo($targetLi).fadeIn(500);
+    $(sshGist.constructList()).hide().appendTo($targetLi).fadeIn(delayTime);
+    $(gitGist.constructList()).hide().appendTo($targetLi).fadeIn(delayTime);
 });
