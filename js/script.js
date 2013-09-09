@@ -37,14 +37,13 @@ Gist.prototype.constructList = function () {
 };
 
 $(function () {
-    var uris, targetLi, delayTime = 500;
+    var delayTime = 500;
+    var $urlList  = $('ul.export-references li');
 
-    if ($('ul.export-references li').length < 5) { // XXX EVIL!!!
-        targetLi = $($('ul.export-references li')[1]);
-        var sshGist = new Gist(targetLi.context.baseURI, 'ssh', 'SSH');
-        var gitGist = new Gist(targetLi.context.baseURI, 'git', 'Git Read-Only');
+    var $targetLi = $($urlList[1]);
+    var sshGist = new Gist($targetLi.context.baseURI, 'ssh', 'SSH');
+    var gitGist = new Gist($targetLi.context.baseURI, 'git', 'Git Read-Only');
 
-        $(sshGist.constructList()).hide().appendTo(targetLi).fadeIn(500);
-        $(gitGist.constructList()).hide().appendTo(targetLi).fadeIn(500);
-    }
+    $(sshGist.constructList()).hide().appendTo($targetLi).fadeIn(500);
+    $(gitGist.constructList()).hide().appendTo($targetLi).fadeIn(500);
 });
