@@ -3,25 +3,18 @@ var Gist = function (baseURL, protocol, description) {
         Gist.prototype.httpsURL = baseURL.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
     }
 
+    var url = '';
+    if (protocol === 'ssh') {
+        url = this.httpsURL.replace(/.*:\/\/(.*)\/(.*)/, "git@$1:$2");
+    } else if (protocol === 'git') {
+        url = this.httpsURL.replace(/.*\/\/(.*)/, "git://$1");
+    }
+
     this.urlInfo = {
         protocol:    protocol,
         description: description,
-        url:         ''
+        url:         url
     };
-};
-
-Gist.prototype.parseURL = function () {
-    var httpsURL  = this.httpsURL,
-        protocol  = this.urlInfo.protocol,
-        url;
-
-    if (protocol === 'ssh') {
-        url = httpsURL.replace(/.*:\/\/(.*)\/(.*)/, "git@$1:$2");
-    } else if (protocol === 'git') {
-        url = httpsURL.replace(/.*\/\/(.*)/, "git://$1");
-    }
-
-    this.urlInfo.url = url;
 };
 
 Gist.prototype.constructList = function () {
@@ -50,8 +43,6 @@ $(function () {
         targetLi = $($('ul.export-references li')[1]);
         var sshGist = new Gist(targetLi.context.baseURI, 'ssh', 'SSH');
         var gitGist = new Gist(targetLi.context.baseURI, 'git', 'Git Read-Only');
-        sshGist.parseURL();
-        gitGist.parseURL();
 
         $(sshGist.constructList()).hide().appendTo(targetLi).fadeIn(500);
         $(gitGist.constructList()).hide().appendTo(targetLi).fadeIn(500);
