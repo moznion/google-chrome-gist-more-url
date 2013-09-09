@@ -20,13 +20,11 @@ function constructListElement(protocol, uri) {
 }
 
 $(function () {
-    $(document).on('mouseover', function () {
-        var uris, targetLi, delayTime = 500;
-        if ($('ul.export-references li').length < 5) { // XXX EVIL!!!
-            targetLi = $($('ul.export-references li')[1]);
-            uris = constructUri(targetLi.context.baseURI);
-            $((constructListElement('SSH', uris.ssh))).hide().appendTo(targetLi).fadeIn(delayTime);
-            $((constructListElement('Git Read-Only', uris.git))).hide().appendTo(targetLi).fadeIn(delayTime);
-        }
-    });
+    var uris, targetLi, delayTime = 500;
+    if ($('ul.export-references li').length < 5) { // XXX EVIL!!!
+        targetLi = $($('ul.export-references li')[1]);
+        uris = constructUri(targetLi.context.baseURI);
+        $((constructListElement('SSH', uris.ssh))).hide().appendTo(targetLi).fadeIn(500);
+        $((constructListElement('Git Read-Only', uris.git))).hide().appendTo(targetLi).fadeIn(500);
+    }
 });
