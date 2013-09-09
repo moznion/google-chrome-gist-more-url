@@ -1,5 +1,5 @@
 {
-    "name": "ShowMoreGistUrl",
+    "name": "more-gist-url",
     "version": "0.0.3",
     "manifest_version": 2,
     "description": "The Google Chrome extension that shows url to clone as 'ssh' and 'git' style on Gist.",
