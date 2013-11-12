@@ -6,8 +6,8 @@
     "content_scripts": [
         {
           "matches": ["https://gist.github.com/*"],
-          "js": ["vendor/js/jquery-1.9.1.min.js", "vendor/js/underscore-min.js", "js/script.js"],
-          "run_at": "document_start"
+          "js": ["vendor/js/jquery-1.9.1.min.js", "js/script.js"],
+          "run_at": "document_idle"
         }
     ]
 }
