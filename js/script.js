@@ -18,7 +18,9 @@ var GistMoreUrl = {
         };
     },
     loadedHandler: function(){
+      if( typeof $ != "undefined" && $.pageUpdate ){
         $.pageUpdate(GistMoreUrl.appendList);
+      }
     },
     appendList: function(){
         var $urlList  = $('ul.export-references li');
