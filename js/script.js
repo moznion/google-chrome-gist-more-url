@@ -1,14 +1,12 @@
 var GistMoreUrl = {
     GistUrl: function(baseURL, protocol, description) {
-       if(!this.__proto__.httpsURL){
-           this.__proto__.httpsURL = baseURL.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
-       }
+        var httpsURL = baseURL.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
 
         var url = '';
         if (protocol === 'ssh') {
-            url = this.httpsURL.replace(/.*:\/\/(.*)\/(.*)/, "git@$1:$2");
+            url = httpsURL.replace(/.*:\/\/(.*)\/(.*)/, "git@$1:$2");
         } else if (protocol === 'git') {
-            url = this.httpsURL.replace(/.*\/\/(.*)/, "git://$1");
+            url = httpsURL.replace(/.*\/\/(.*)/, "git://$1");
         }
 
         this.urlInfo = {
