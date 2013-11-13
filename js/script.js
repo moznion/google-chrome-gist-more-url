@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
     var Gist = function (baseURL, protocol, description) {
         if (!Gist.prototype.httpsURL) {
             Gist.prototype.httpsURL = baseURL.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
         return list;
     };
 
-    function appendList(){
+    function appendList() {
         var $urlList  = $('ul.export-references li');
 
         if ($urlList.length > 0 && $('_gistmoreurl').length == 0) {
@@ -56,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function(){
             $(gitGist.constructList()).hide().appendTo($targetLi).fadeIn(delayTime);
         }
     }
-
-   //appendList();
 
     $.pageUpdate(appendList);
 });
