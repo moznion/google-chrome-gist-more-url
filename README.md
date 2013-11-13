@@ -1,4 +1,4 @@
-# NAME
+# NAME [![Build Status](https://travis-ci.org/moznion/google-chrome-gist-more-url.png?branch=master)](https://travis-ci.org/moznion/google-chrome-gist-more-url)
 gist-more-url - The Google Chrome extension to show extend url to clone (by 'ssh' and 'git') on Gist.
 
 # USAGE & HOW TO INSTALL
