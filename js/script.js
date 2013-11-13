@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var Gist = function (baseURL, protocol, description) {
-        if (!Gist.prototype.httpsURL) {
-            Gist.prototype.httpsURL = baseURL.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
-        }
+var GistMoreUrl = {
+    GistUrl: function(baseURL, protocol, description) {
+       if(!this.__proto__.httpsURL){
+           this.__proto__.httpsURL = baseURL.replace(/(.*):\/\/(.*)\/.*?\/(.*)$/, "$1://$2/$3.git");
+       }
 
         var url = '';
         if (protocol === 'ssh') {
@@ -16,28 +16,11 @@ document.addEventListener("DOMContentLoaded", function() {
             description: description,
             url:         url
         };
-    };
-
-    Gist.prototype.constructList = function () {
-        var urlInfo = this.urlInfo;
-
-        var list_template = '<li>' +
-            '<label for="link-field">' +
-            '<strong>clone</strong> ' +
-            'this gist (<%- description %>)' +
-            '</label>' +
-            '<input type="text" readonly=" spellcheck="false" class="url-field js-url-field" name="link-field" ' +
-            'value=<%- url %>>' +
-            '</li>';
-        var list = _.template(list_template)({
-            description: urlInfo.description,
-            url:         urlInfo.url
-        });
-
-        return list;
-    };
-
-    function appendList() {
+    },
+    loadedHandler: function(){
+        $.pageUpdate(GistMoreUrl.appendList);
+    },
+    appendList: function(){
         var $urlList  = $('ul.export-references li');
 
         if ($urlList.length > 0 && $('_gistmoreurl').length == 0) {
@@ -48,14 +31,33 @@ document.addEventListener("DOMContentLoaded", function() {
             } catch (e) {
                 return;
             }
-            var sshGist = new Gist(baseURI, 'ssh', 'SSH');
-            var gitGist = new Gist(baseURI, 'git', 'Git Read-Only');
+            var sshGist = new GistMoreUrl.GistUrl(baseURI, 'ssh', 'SSH');
+            var gitGist = new GistMoreUrl.GistUrl(baseURI, 'git', 'Git Read-Only');
 
             var delayTime = 500;
             $(sshGist.constructList()).hide().appendTo($targetLi).fadeIn(delayTime);
             $(gitGist.constructList()).hide().appendTo($targetLi).fadeIn(delayTime);
         }
     }
+};
 
-    $.pageUpdate(appendList);
-});
+GistMoreUrl.GistUrl.prototype.constructList = function () {
+    var urlInfo = this.urlInfo;
+
+    var list_template = '<li>' +
+        '<label for="link-field">' +
+        '<strong>clone</strong> ' +
+        'this gist (<%- description %>)' +
+        '</label>' +
+        '<input type="text" readonly=" spellcheck="false" class="url-field js-url-field" name="link-field" ' +
+        'value=<%- url %>>' +
+        '</li>';
+    var list = _.template(list_template)({
+        description: urlInfo.description,
+        url:         urlInfo.url
+    });
+
+    return list;
+};
+
+document.addEventListener("DOMContentLoaded", GistMoreUrl.loadedHandler);
