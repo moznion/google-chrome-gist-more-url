@@ -49,7 +49,7 @@ GistMoreUrl.GistUrl.prototype.constructList = function () {
         '<strong>clone</strong> ' +
         'this gist (<%- description %>)' +
         '</label>' +
-        '<input type="text" readonly=" spellcheck="false" class="url-field js-url-field" name="link-field" ' +
+        '<input type="text" readonly spellcheck="false" class="url-field js-url-field" name="link-field" ' +
         'value=<%- url %>>' +
         '</li>';
     var list = _.template(list_template)({
