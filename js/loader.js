@@ -1,4 +1,4 @@
-var targets = ['vendor/js/underscore-min.js','js/script.js']; 
+var targets = ['vendor/js/lodash.custom.min.js','js/script.js']; 
 
 targets.forEach(function(js){
     var scriptElement = document.createElement('script');
