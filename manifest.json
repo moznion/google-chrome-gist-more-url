@@ -12,6 +12,6 @@
     ],
     "web_accessible_resources": [
       "js/script.js",
-      "vendor/js/underscore-min.js"
+      "vendor/js/lodash.custom.min.js"
     ]
 }
